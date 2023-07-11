@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleRight, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function Chatbot() {
+  // State variables
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
   const [isWelcomeMessageSent, setIsWelcomeMessageSent] = useState(false);
@@ -20,6 +21,7 @@ function Chatbot() {
   const [url, setUrl] = useState('');
   const [isUrlVisible, setUrlVisible] = useState(false);
 
+  // Send message to the chatbot API
   const sendMessage = async () => {
     const userMessage = { message, isUser: true, timestamp: new Date() };
     setChat(prevChat => [...prevChat, userMessage]);
@@ -36,6 +38,7 @@ function Chatbot() {
     setMessage('');
   };
 
+  // Get the current context from the server
   const getCurrentContext = async () => {
     try {
       const response = await axios.get('http://localhost:8000/api/context/');
@@ -46,15 +49,18 @@ function Chatbot() {
     }
   };
 
+  // Close the current context
   const closeContext = () => {
     setCurrentContext('');
     setContextVisible(false); // Hide the current context
   };
 
+  // Handle the "Update Context" button click
   const handleUpdateClick = () => {
     setUpdateVisible(true);
   };
 
+  // Handle the update context submission
   const handleUpdateSubmit = async () => {
     try {
       console.log('Update Paragraph:', updateParagraph); // Log the paragraph value
@@ -69,11 +75,13 @@ function Chatbot() {
     }
   };
 
+  // Handle the update context cancellation
   const handleUpdateCancel = () => {
     setUpdateParagraph('');
     setUpdateVisible(false);
   };
 
+  // Handle file upload
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     const formData = new FormData();
@@ -101,6 +109,7 @@ function Chatbot() {
     }
   };
 
+  // Handle URL submission
   const handleUrlSubmit = async () => {
     try {
       console.log('URL:', url); // Log the URL value
@@ -116,18 +125,20 @@ function Chatbot() {
     }
   };
 
+  // Handle URL cancellation
   const handleUrlCancel = () => {
     setUrl('');
     setUrlVisible(false);
   };
 
+  // Scroll to the bottom of the chat window when the chat updates
   useEffect(() => {
     const chatWindow = document.getElementById('chat-window');
     chatWindow.scrollTop = chatWindow.scrollHeight;
   }, [chat]);
 
+  // Send welcome message on component mount (initial load)
   useEffect(() => {
-    // Send welcome message on component mount (initial load)
     if (!isWelcomeMessageSent) {
       const welcomeMessage = { message: 'Welcome! How can I assist you?', isUser: false, timestamp: new Date() };
       setChat(prevChat => [...prevChat, welcomeMessage]);
@@ -135,14 +146,18 @@ function Chatbot() {
     }
   }, [isWelcomeMessageSent]);
 
-  const handleUploadClick = () => {
-    setUploadClicked(true);
-  };
+  // Format the timestamp as HH:MM AM/PM
+  function formatTimestamp(timestamp) {
+    const date = new Date(timestamp);
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const period = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 || 12;
+    const formattedMinutes = minutes.toString().padStart(2, '0');
+    return `${formattedHours}:${formattedMinutes} ${period}`;
+  }
 
-  const handleUrlClick = () => {
-    setUrlVisible(true);
-  };
-
+  // Render the chatbot component
   return (
     <div className="app-container">
       <Container className={`chatbot-container ${isContextVisible ? 'expanded' : ''}`}>
@@ -260,17 +275,6 @@ function Chatbot() {
       </Container>
     </div>
   );
-}
-
-// Format the timestamp as HH:MM AM/PM
-function formatTimestamp(timestamp) {
-  const date = new Date(timestamp);
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-  const period = hours >= 12 ? 'PM' : 'AM';
-  const formattedHours = hours % 12 || 12;
-  const formattedMinutes = minutes.toString().padStart(2, '0');
-  return `${formattedHours}:${formattedMinutes} ${period}`;
 }
 
 export default Chatbot;
