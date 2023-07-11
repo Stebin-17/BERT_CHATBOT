@@ -295,7 +295,7 @@ file: <document-file>
 
 --------------------------------
 
-> /api/enter-url/
+## /api/enter-url/
 
 #### Description
 
@@ -327,11 +327,11 @@ POST /api/enter-url/
 }
 ```
 
-## Response
+#### Response
 
 - **Content-Type:** application/json
 
-### Success Response
+#### Success Response
 
 - **Status Code:** 200 (OK)
 
