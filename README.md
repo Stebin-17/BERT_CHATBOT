@@ -14,6 +14,8 @@
 
 **6. APP WORKING**
 
+**7. REFERENCES**
+
 #
 
 ## **1. INTRODUCTION:**
@@ -362,6 +364,7 @@ POST /api/enter-url/
 
 --------------------------------
 
+#
 
 ## **6. APP WORKING:**
 
@@ -371,6 +374,16 @@ The output of the App is shown below:
   <video src="https://github.com/Stebin-17/BERT_CHATBOT/assets/114398468/ba4775d1-eaa1-4bb4-8522-4cf43c7db69b"width="50%"/>
 </div>
 
+#
+
+## **7. REFERENCES**
+
+- https://huggingface.co/docs/transformers/model_doc/bert
+- https://dev.to/documatic/build-a-chatbot-using-python-django-46hb
+- https://legacy.reactjs.org/docs/getting-started.html
+- https://docs.djangoproject.com/en/4.2/
+- https://betterprogramming.pub/how-to-use-async-await-with-axios-in-react-e07daac2905f
+- https://www.tensorflow.org/tfmodels/nlp/fine_tune_bert
 
 
 
