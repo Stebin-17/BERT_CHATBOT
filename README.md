@@ -39,7 +39,7 @@ Additionally, the backend offers an async Upload Document API. Users can upload 
 **FLOWCHART**
 
 <p align="center">
-  <img src="https://github.com/Stebin-17/BERT_CHATBOT/assets/114398468/96134c6a-1151-465a-a660-995582cbe661" width="75%" />
+  <img src="https://github.com/Stebin-17/BERT_CHATBOT/assets/114398468/96134c6a-1151-465a-a660-995582cbe661" width="60%" />
 </p>
 
 #
