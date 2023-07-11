@@ -12,7 +12,7 @@
 
 **5. API_DOCUMENTATION**
 
-**6. APP INTERFACE**
+**6. APP WORKING**
 
 #
 
@@ -79,7 +79,293 @@ This code will run the app in development mode. Open [http://localhost:3000](htt
 
 ## **5. API DOCUMENTATION:**
 
-## **5. OUTPUT:**
+> /api/chatbot/
+
+#### Description
+
+The Chatbot API allows users to interact with the chatbot and receive responses based on their input messages.
+
+#### Endpoint
+
+```
+POST /api/chatbot/
+```
+
+#### Request
+
+- **Content-Type:** application/json
+
+#### Request Body
+
+| Parameter | Type   | Required | Description                 |
+|-----------|--------|----------|-----------------------------|
+| message   | string | Yes      | The user's message.         |
+
+
+#### Response
+
+- **Content-Type:** application/json
+
+#### Success Response
+
+- **Status Code:** 200 (OK)
+
+#### Response Body
+
+| Parameter | Type   | Description                            |
+|-----------|--------|----------------------------------------|
+| message   | string | The chatbot's response to the user's message. |
+
+#### Error Responses
+
+- **Status Code:** 400 (Bad Request)
+
+#### Response Body
+
+| Parameter | Type   | Description                            |
+|-----------|--------|----------------------------------------|
+| error     | string | Error message indicating the invalid request. |
+
+--------------------------------
+
+> /api/context/
+
+#### Description
+
+The Get Current Context API allows users to retrieve the current context data.
+
+#### Endpoint
+
+```
+GET /api/context/
+```
+
+#### Request
+
+- **Content-Type:** application/json
+
+#### Response
+
+- **Content-Type:** application/json
+
+#### Success Response
+
+- **Status Code:** 200 (OK)
+
+#### Response Body
+
+| Parameter | Type   | Description                            |
+|-----------|--------|----------------------------------------|
+| context   | string | The current context data.               |
+
+
+#### Error Responses
+
+- **Status Code:** 500 (Internal Server Error)
+
+#### Response Body
+
+| Parameter | Type   | Description                            |
+|-----------|--------|----------------------------------------|
+| error     | string | Error message indicating an internal server error. |
+
+--------------------------------
+
+> /api/update-context/
+
+#### Description
+
+The Update Context API allows users to update the context by providing a paragraph.
+
+#### Endpoint
+
+```
+POST /api/update-context/
+```
+
+#### Request
+
+- **Content-Type:** application/json
+
+#### Parameters
+
+| Parameter | Type   | Required | Description                               |
+|-----------|--------|----------|-------------------------------------------|
+| paragraph | string | Yes      | The paragraph to update the context with. |
+
+#### Response
+
+- **Content-Type:** application/json
+
+### Success Response
+
+- **Status Code:** 200 (OK)
+
+#### Response Body
+
+| Parameter | Type   | Description                            |
+|-----------|--------|----------------------------------------|
+| message   | string | Success message indicating the context update. |
+
+
+#### Error Responses
+
+- **Status Code:** 400 (Bad Request)
+
+#### Response Body
+
+| Parameter | Type   | Description                            |
+|-----------|--------|----------------------------------------|
+| message   | string | Error message indicating a missing or invalid parameter. |
+
+
+- **Status Code:** 500 (Internal Server Error)
+
+#### Response Body
+
+| Parameter | Type   | Description                            |
+|-----------|--------|----------------------------------------|
+| message   | string | Error message indicating an internal server error. |
+
+--------------------------------
+
+> /api/upload-document/
+
+#### Description
+
+The Upload Document API allows users to upload a document and extract its text content. The supported file formats include PDF, TXT, and DOCX.
+
+#### Endpoint
+
+```
+POST /api/upload-document/
+```
+
+#### Request
+
+- **Content-Type:** multipart/form-data
+
+#### Parameters
+
+| Parameter | Type | Required | Description                               |
+|-----------|------|----------|-------------------------------------------|
+| file      | File | Yes      | The document file to upload.               |
+
+#### Example
+
+```
+POST /api/upload-document/
+
+file: <document-file>
+```
+
+#### Response
+
+- **Content-Type:** application/json
+
+#### Success Response
+
+- **Status Code:** 200 (OK)
+
+#### Response Body
+
+| Parameter | Type   | Description                                      |
+|-----------|--------|--------------------------------------------------|
+| message   | string | Success message indicating the upload and extraction of the document's text content. |
+
+
+#### Error Responses
+
+- **Status Code:** 400 (Bad Request)
+
+#### Response Body
+
+| Parameter | Type   | Description                                      |
+|-----------|--------|--------------------------------------------------|
+| message   | string | Error message indicating that no document was uploaded. |
+
+
+- **Status Code:** 500 (Internal Server Error)
+
+#### Response Body
+
+| Parameter | Type   | Description                                      |
+|-----------|--------|--------------------------------------------------|
+| message   | string | Error message indicating an internal server error during document upload or extraction. |
+
+--------------------------------
+
+> /api/enter-url/
+
+#### Description
+
+The Enter URL API allows users to enter a URL and extract the main text content from the provided URL. The text content is then saved to the context file.
+
+#### Endpoint
+
+```
+POST /api/enter-url/
+```
+
+## Request
+
+- **Content-Type:** application/json
+
+### Parameters
+
+| Parameter | Type   | Required | Description                                   |
+|-----------|--------|----------|-----------------------------------------------|
+| url       | string | Yes      | The URL from which to extract the text content. |
+
+### Example
+
+```
+POST /api/enter-url/
+
+{
+  "url": "https://example.com/article"
+}
+```
+
+## Response
+
+- **Content-Type:** application/json
+
+### Success Response
+
+- **Status Code:** 200 (OK)
+
+#### Response Body
+
+| Parameter | Type   | Description                                          |
+|-----------|--------|------------------------------------------------------|
+| message   | string | Success message indicating the successful URL content extraction and save operation. |
+
+
+#### Error Responses
+
+- **Status Code:** 400 (Bad Request)
+
+#### Response Body
+
+| Parameter | Type   | Description                                      |
+|-----------|--------|--------------------------------------------------|
+| message   | string | Error message indicating that the 'url' parameter is missing or invalid. |
+
+- **Status Code:** 500 (Internal Server Error)
+
+#### Response Body
+
+| Parameter | Type   | Description                                      |
+|-----------|--------|--------------------------------------------------|
+| message   | string | Error message indicating an internal server error during URL content extraction or save. |
+
+--------------------------------
+
+
+## **6. APP WORKING:**
+
+The output of the App is shown below:
 
 <div align="center">
   <video src="https://github.com/Stebin-17/BERT_CHATBOT/assets/114398468/ba4775d1-eaa1-4bb4-8522-4cf43c7db69b"width="50%"/>
