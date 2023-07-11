@@ -70,9 +70,11 @@ This code will run the app in development mode. Open [http://localhost:3000](htt
 
 ## **5. OUTPUT:**
 
+<div align="center">
+  <video src="https://github.com/Stebin-17/BERT_CHATBOT/assets/114398468/ba4775d1-eaa1-4bb4-8522-4cf43c7db69b"/>
+</div>
 
 
-https://github.com/Stebin-17/BERT_CHATBOT/assets/114398468/ba4775d1-eaa1-4bb4-8522-4cf43c7db69b
 
 
 
